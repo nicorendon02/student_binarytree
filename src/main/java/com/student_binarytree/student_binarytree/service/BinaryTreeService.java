@@ -109,10 +109,21 @@ public class BinaryTreeService {
     }
 
     // ResponseEntity to get Boys that end in a certain number and are Leaves
-    public ResponseEntity<ResponseBinaryTreeDto> isEqualAndLeaf(int number) throws DataNotFoundException
+    public ResponseEntity<ResponseBinaryTreeDto> isEqualAndLeaf(int number) throws DataNotFoundException,
+            BinaryTreeException
     {
         return new ResponseEntity<>(
                 new ResponseBinaryTreeDto(binaryTree.isEqualAndLeaf(number),"successful List",
+                        null),HttpStatus.OK);
+
+    }
+
+    // ResponseEntity to get Boys that end in a certain number and are Leaves
+    public ResponseEntity<ResponseBinaryTreeDto> listStudentsByGrades(float grade, int condition)
+            throws BinaryTreeException,DataNotFoundException
+    {
+        return new ResponseEntity<>(
+                new ResponseBinaryTreeDto(binaryTree.listStudentsByGrades(grade,condition),"successful List",
                         null),HttpStatus.OK);
 
     }

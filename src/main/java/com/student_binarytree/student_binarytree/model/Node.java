@@ -130,7 +130,7 @@ public class Node {
     }
 
     // method to return which boys' IDs end in a certain number given by user
-    public List<Student> listEndEqualNum(int number) //throws DataNotFoundException
+    public List<Student> listEndEqualNum(int number)
     {
         // Creating a new List...
         List<Student> listEndEqualNum = new ArrayList<>();
@@ -142,31 +142,16 @@ public class Node {
         // if root Left has something...
         if (this.getLeft() != null)
         {
-            // if root Left ends in number...
-            if (this.getData().getCode() % 10 == number)
-            {
-                // add to the List and move to the Left and call the method AGAIN!
-                listEndEqualNum.addAll(this.getLeft().listEndEqualNum(number));
-            }
+            // add to the List and move to the Left and call the method AGAIN!
+            listEndEqualNum.addAll(this.getLeft().listEndEqualNum(number));
+
         }
         // if root Right has something...
         if (this.getRight() != null)
         {
-            // if root Right ends in number...
-            if (this.getData().getCode() % 10 == number)
-            {
-                // add to the List and move to the Right and call the method AGAIN!
-                listEndEqualNum.addAll(this.getRight().listEndEqualNum(number));
-            }
+            // add to the List and move to the Right and call the method AGAIN!
+            listEndEqualNum.addAll(this.getRight().listEndEqualNum(number));
         }
-
-        // HELP WITH THIS VALIDATION!!
-        /*
-        if(listEqualNum.isEmpty()){
-            throw new DataNotFoundException("no hay niños terminados en ese numero");
-        }
-         */
-
         // Once finished return the List
         return listEndEqualNum;
     }
@@ -391,5 +376,55 @@ public class Node {
             listEqualAndLeaf.addAll(this.getRight().isEqualAndLeaf(number));
         }
         return listEqualAndLeaf;
+    }
+
+    // Method to List students whose grades match to a certain condition
+    public List<Student> listStudentsByGrades(float grade, int condition) {
+
+        List<Student> listStudentsByGrade = new ArrayList<>();
+
+        if (condition == 1) {
+            if (this.getData().getGrade() <= grade) {
+                listStudentsByGrade.add(this.getData());
+            }
+            if (this.getLeft() != null) {
+                listStudentsByGrade.addAll(this.getLeft().listStudentsByGrades(grade, condition));
+            }
+            if (this.getRight() != null) {
+                listStudentsByGrade.addAll(this.getRight().listStudentsByGrades(grade, condition));
+            }
+        } else if (condition == 2) {
+            if (this.getData().getGrade() < grade) {
+                listStudentsByGrade.add(this.getData());
+            }
+            if (this.getLeft() != null) {
+                listStudentsByGrade.addAll(this.getLeft().listStudentsByGrades(grade, condition));
+            }
+            if (this.getRight() != null) {
+                listStudentsByGrade.addAll(this.getRight().listStudentsByGrades(grade, condition));
+            }
+        } else if (condition == 3) {
+            if (this.getData().getGrade() >= grade) {
+                listStudentsByGrade.add(this.getData());
+            }
+            if (this.getLeft() != null) {
+                listStudentsByGrade.addAll(this.getLeft().listStudentsByGrades(grade, condition));
+            }
+            if (this.getRight() != null) {
+                listStudentsByGrade.addAll(this.getRight().listStudentsByGrades(grade, condition));
+            }
+        } else if (condition == 4) {
+            if (this.getData().getGrade() > grade) {
+                listStudentsByGrade.add(this.getData());
+            }
+            if (this.getLeft() != null) {
+                listStudentsByGrade.addAll(this.getLeft().listStudentsByGrades(grade, condition));
+            }
+            if (this.getRight() != null) {
+                listStudentsByGrade.addAll(this.getRight().listStudentsByGrades(grade, condition));
+            }
+        }
+
+        return listStudentsByGrade;
     }
 }

@@ -101,7 +101,39 @@ public class BinaryTreeController {
     // get Boys that end in a certain number and are Leaves
     @GetMapping("/equalAndLeaf/{number}")
     public @ResponseBody
-    ResponseEntity<?> isEqualAndLeaf(@PathVariable int number) throws DataNotFoundException {
+    ResponseEntity<?> isEqualAndLeaf(@PathVariable int number) throws DataNotFoundException, BinaryTreeException {
         return binaryTreeService.isEqualAndLeaf(number);
+    }
+
+    // <=
+    @GetMapping("/studentsByGradesLessThanEqualTo/{grade}")
+    public @ResponseBody
+    ResponseEntity<?> listStudentsByGradesLessThanEqualTo(@PathVariable float grade) throws BinaryTreeException,
+            DataNotFoundException {
+        return binaryTreeService.listStudentsByGrades(grade,1);
+    }
+
+    // <
+    @GetMapping("/studentsByGradesLessThan/{grade}")
+    public @ResponseBody
+    ResponseEntity<?> listStudentsByGradesLessThan(@PathVariable float grade) throws BinaryTreeException,
+            DataNotFoundException {
+        return binaryTreeService.listStudentsByGrades(grade,2);
+    }
+
+    // >=
+    @GetMapping("/studentsByGradesGreaterThanEqualTo/{grade}")
+    public @ResponseBody
+    ResponseEntity<?> listStudentsByGradesGreaterThanEqualTo(@PathVariable float grade) throws BinaryTreeException,
+            DataNotFoundException {
+        return binaryTreeService.listStudentsByGrades(grade,3);
+    }
+
+    // >
+    @GetMapping("/studentsByGradesGreaterThan/{grade}")
+    public @ResponseBody
+    ResponseEntity<?> listStudentsByGradesGreaterThan(@PathVariable float grade) throws BinaryTreeException,
+            DataNotFoundException {
+        return binaryTreeService.listStudentsByGrades(grade,4);
     }
 }

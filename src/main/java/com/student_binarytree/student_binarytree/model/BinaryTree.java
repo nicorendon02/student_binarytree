@@ -42,7 +42,7 @@ public class BinaryTree {
     {
         if (root == null)
         {
-            throw new DataNotFoundException("There are no students to show");
+            throw new DataNotFoundException("There are no students yet");
         }
         else {
             // Call to a certain method according to an Option...
@@ -75,6 +75,10 @@ public class BinaryTree {
         // if root has something...
         if (root!=null)
         {
+            if(root.listEndEqualNum(number).isEmpty())
+            {
+                throw new DataNotFoundException("Couldn't find Students with that condition");
+            }
             // call the method in Node
             return root.listEndEqualNum(number);
         }
@@ -178,12 +182,34 @@ public class BinaryTree {
     }
 
     // get Boys that end in a certain number and are Leaves
-    public List<Student> isEqualAndLeaf(int number) throws DataNotFoundException
+    public List<Student> isEqualAndLeaf(int number) throws DataNotFoundException, BinaryTreeException
     {
         // if root has something...
         if(root != null)
         {
+            if(root.isEqualAndLeaf(number).isEmpty())
+            {
+                throw new DataNotFoundException("Couldn't find Students with that condition");
+            }
             return root.isEqualAndLeaf(number);
+        }
+        throw new DataNotFoundException("There are no students yet");
+    }
+
+    public List<Student> listStudentsByGrades(float grade, int condition) throws BinaryTreeException,
+            DataNotFoundException
+    {
+        if(root != null)
+        {
+            if(condition > 0 && condition < 5)
+            {
+                if(root.listStudentsByGrades(grade,condition).isEmpty())
+                {
+                    throw new DataNotFoundException("Couldn't find Students with that condition");
+                }
+                return root.listStudentsByGrades(grade,condition);
+            }
+            throw new BinaryTreeException("The condition given does not exist");
         }
         throw new DataNotFoundException("There are no students yet");
     }
