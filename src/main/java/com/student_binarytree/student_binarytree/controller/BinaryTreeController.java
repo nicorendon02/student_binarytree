@@ -105,7 +105,7 @@ public class BinaryTreeController {
         return binaryTreeService.isEqualAndLeaf(number);
     }
 
-    // <=
+    // List students whose grades match to a certain condition (<=)
     @GetMapping("/studentsByGradesLessThanEqualTo/{grade}")
     public @ResponseBody
     ResponseEntity<?> listStudentsByGradesLessThanEqualTo(@PathVariable float grade) throws BinaryTreeException,
@@ -113,7 +113,7 @@ public class BinaryTreeController {
         return binaryTreeService.listStudentsByGrades(grade,1);
     }
 
-    // <
+    // List students whose grades match to a certain condition (<)
     @GetMapping("/studentsByGradesLessThan/{grade}")
     public @ResponseBody
     ResponseEntity<?> listStudentsByGradesLessThan(@PathVariable float grade) throws BinaryTreeException,
@@ -121,7 +121,7 @@ public class BinaryTreeController {
         return binaryTreeService.listStudentsByGrades(grade,2);
     }
 
-    // >=
+    // List students whose grades match to a certain condition (>=)
     @GetMapping("/studentsByGradesGreaterThanEqualTo/{grade}")
     public @ResponseBody
     ResponseEntity<?> listStudentsByGradesGreaterThanEqualTo(@PathVariable float grade) throws BinaryTreeException,
@@ -129,7 +129,7 @@ public class BinaryTreeController {
         return binaryTreeService.listStudentsByGrades(grade,3);
     }
 
-    // >
+    // List students whose grades match to a certain condition (>)
     @GetMapping("/studentsByGradesGreaterThan/{grade}")
     public @ResponseBody
     ResponseEntity<?> listStudentsByGradesGreaterThan(@PathVariable float grade) throws BinaryTreeException,

@@ -118,7 +118,7 @@ public class BinaryTreeService {
 
     }
 
-    // ResponseEntity to get Boys that end in a certain number and are Leaves
+    // ResponseEntity to List students whose grades match to a certain condition
     public ResponseEntity<ResponseBinaryTreeDto> listStudentsByGrades(float grade, int condition)
             throws BinaryTreeException,DataNotFoundException
     {
