@@ -201,15 +201,11 @@ public class BinaryTree {
     {
         if(root != null)
         {
-            if(condition > 0 && condition < 5)
+            if(root.listStudentsByGrades(grade,condition).isEmpty())
             {
-                if(root.listStudentsByGrades(grade,condition).isEmpty())
-                {
-                    throw new DataNotFoundException("Couldn't find Students with that condition");
-                }
-                return root.listStudentsByGrades(grade,condition);
+                throw new DataNotFoundException("Couldn't find Students with that condition");
             }
-            throw new BinaryTreeException("The condition given does not exist");
+            return root.listStudentsByGrades(grade,condition);
         }
         throw new DataNotFoundException("There are no students yet");
     }
